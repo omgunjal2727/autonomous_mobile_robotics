@@ -1,0 +1,52 @@
+# YDLidar Configuration for Raspberry Pi
+# Adapted for real hardware deployment
+
+ydlidar_node:
+  ros__parameters:
+    # Serial port settings - adjust based on your setup
+    # Use 'ls /dev/ttyUSB*' to find the correct port
+    port: /dev/ttyUSB0
+    baudrate: 115200
+    
+    # Frame IDs
+    frame_id: laser_link
+    
+    # Lidar model (adjust based on your YD LiDAR model)
+    # TYPE_TRIANGLE = 1 for X2/X2L/X4
+    # TYPE_TOF = 4 for TG series
+    lidar_type: 1
+    device_type: 0  # YDLIDAR_TYPE_SERIAL = 0
+    
+    # Sample rate (5000-8000 Hz for X2, adjust for your model)
+    sample_rate: 5
+    
+    # Scan settings
+    abnormal_check_count: 4
+    
+    # Range settings (meters) - adjust based on your LiDAR model
+    min_range: 0.12  # X2 minimum range
+    max_range: 8.0   # X2 maximum range
+    
+    # Angle settings (degrees)
+    min_angle: -180.0
+    max_angle: 180.0
+    
+    # Scan frequency (Hz) - X2 supports 6-12 Hz
+    frequency: 8.0
+    
+    # Intensity support
+    intensity: false
+    
+    # Motor control
+    reversion: false
+    inverted: false
+    auto_reconnect: true
+    
+    # Single channel (true for X2, false for X4)
+    singleChannel: true
+    
+    # Intensity bit count
+    intensity_bit: 10
+    
+    # Support motor DTR
+    support_motor_dtr: false
