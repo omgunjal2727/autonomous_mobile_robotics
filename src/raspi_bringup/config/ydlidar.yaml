@@ -17,8 +17,8 @@ ydlidar_node:
     lidar_type: 1
     device_type: 0  # YDLIDAR_TYPE_SERIAL = 0
     
-    # Sample rate (5000-8000 Hz for X2, adjust for your model)
-    sample_rate: 5
+    # Sample rate (3000 Hz for X2)
+    sample_rate: 3
     
     # Scan settings
     abnormal_check_count: 4
@@ -50,3 +50,9 @@ ydlidar_node:
     
     # Support motor DTR
     support_motor_dtr: false
+    
+    # X2-specific parameters (critical for proper operation)
+    fixed_resolution: false
+    isSingleChannel: true
+    invalid_range_is_inf: false
+
