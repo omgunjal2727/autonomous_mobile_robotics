@@ -1,0 +1,51 @@
+# YDLidar Configuration
+# Connect your YD LiDAR directly to laptop via USB
+
+ydlidar_node:
+  ros__parameters:
+    # Serial port - adjust based on your setup
+    # Use 'ls /dev/ttyUSB*' to find the correct port
+    port: /dev/ttyUSB0
+    baudrate: 115200
+    
+    # Frame ID
+    frame_id: laser_link
+    
+    # Lidar model (adjust based on your YD LiDAR model)
+    # TYPE_TRIANGLE = 1 for X2/X2L/X4
+    lidar_type: 1
+    device_type: 0
+    
+    # Sample rate
+    sample_rate: 5
+    
+    # Scan settings
+    abnormal_check_count: 4
+    
+    # Range settings (meters)
+    min_range: 0.12
+    max_range: 8.0
+    
+    # Angle settings (degrees)
+    min_angle: -180.0
+    max_angle: 180.0
+    
+    # Scan frequency (Hz)
+    frequency: 8.0
+    
+    # Intensity support
+    intensity: false
+    
+    # Motor control
+    reversion: false
+    inverted: false
+    auto_reconnect: true
+    
+    # Single channel
+    singleChannel: true
+    
+    # Intensity bit count
+    intensity_bit: 10
+    
+    # Support motor DTR
+    support_motor_dtr: false
