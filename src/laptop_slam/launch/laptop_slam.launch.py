@@ -60,6 +60,15 @@ def generate_launch_description():
     )
     
     # SLAM Toolbox node (online async)
+    # Fake odometry: odom -> base_link (static 0)
+    # Necessary because we don't have wheel encoders
+    fake_odom_tf = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='fake_odom_tf',
+        arguments=['0', '0', '0', '0', '0', '0', 'odom', 'base_link']
+    )
+
     slam_node = Node(
         package='slam_toolbox',
         executable='async_slam_toolbox_node',
@@ -90,6 +99,7 @@ def generate_launch_description():
     
     nodes = [
         robot_state_publisher_node,
+        fake_odom_tf,
         slam_node,
         rviz_node,
     ]

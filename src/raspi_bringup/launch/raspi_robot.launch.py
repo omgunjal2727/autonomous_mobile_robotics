@@ -85,10 +85,20 @@ def generate_launch_description():
             'cmd_vel_timeout': 0.5
         }]
     )
+
+    # Static transform: base_link -> laser_link
+    # Enables SLAM to know where the LiDAR is on the robot
+    static_tf_node = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='base_to_laser_tf',
+        arguments=['0', '0', '0.1', '0', '0', '0', 'base_link', 'laser_link']
+    )
     
     nodes = [
         ydlidar_node,
         esp32_bridge_node,
+        static_tf_node,
     ]
     
     return LaunchDescription(declared_arguments + nodes)
